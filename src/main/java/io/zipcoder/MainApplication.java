@@ -16,7 +16,7 @@ public class MainApplication {
     String petName = "";
     String species = "";
     Pets[] pets;
-    Map<String, Pets[]> owners = new HashMap<String, Pets[]>();
+    Map<String, Pets[]> owners = new HashMap();
 
     public void main(String[] args) {
         getInfo1();
@@ -84,6 +84,14 @@ public class MainApplication {
         sb.append(String.format("%s owns %s %s.", userName, numPets, vocab));
         for (Pets p : pets) {
             sb.append(String.format("%s is a %s.", p.getPetName(), getSpecies()));
+        }
+        return sb.toString();
+    }
+
+    public String printPets() {
+        StringBuilder sb = new StringBuilder();
+        for (Pets p : pets) {
+            sb.append(p.getClass() + p.getPetName());
         }
         return sb.toString();
     }

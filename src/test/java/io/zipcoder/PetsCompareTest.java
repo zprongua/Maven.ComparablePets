@@ -4,10 +4,12 @@ import io.zipcoder.pets.Pets;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MainApplicationTest {
+import java.util.Arrays;
+
+public class PetsCompareTest {
 
     @Test
-    public void testMe(){
+    public void testComparable() {
         MainApplication ma = new MainApplication();
         String name = ma.getName();
         int pets = ma.getHowManyPets();
@@ -17,9 +19,12 @@ public class MainApplicationTest {
         Pets frog = ma.createPet("frog", "Froggy");
         Pets pet = ma.createPet("", "Petsy");
 
-        Assert.assertEquals("", name);
-        Assert.assertEquals(1, pets);
-        Assert.assertEquals(petName, pet.getPetName());
-        Assert.assertEquals("", ma.getSpecies());
+        Pets[] pa = new Pets[]{ dog, cat, frog, pet };
+        Arrays.sort(pa);
+        for (Pets p : pa) {
+            System.out.println(p.getPetName());
+        }
+
+        Assert.assertEquals("Steve", pa[0].getPetName());
 }
 }
